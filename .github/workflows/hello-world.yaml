@@ -60,5 +60,6 @@ jobs:
   Component-test:
       runs-on: ubuntu-latest
       needs: Docker-image
-      - name: Com-test
-        run: bash ci/component-test.sh
+      steps:
+        - name: Com-test
+          run: bash ci/component-test.sh
