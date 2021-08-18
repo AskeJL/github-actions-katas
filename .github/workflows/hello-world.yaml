@@ -66,6 +66,5 @@ jobs:
         with:
           name: codes
           path: .
-      steps:
       - name: component-tests
         run: bash ci/component-test.sh
