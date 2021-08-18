@@ -1,6 +1,5 @@
-name: hello-world
+name: Java-CI
 on: push
-name: java-CI
 jobs:
   Clone-down:
     runs-on: ubuntu-latest
@@ -13,7 +12,7 @@ jobs:
     needs: Clone-down
     - name: Test
         run: ci/unit-test-app.sh
-  job-3:
+  Artifact:
     needs: Clone-down
     - name: Upload Repo
         uses: actions/upload-artifact@v2
