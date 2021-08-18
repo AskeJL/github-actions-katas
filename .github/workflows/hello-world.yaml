@@ -13,7 +13,7 @@ jobs:
     needs: Clone-down
     container: gradle:6-jdk11
     - name: Test
-        run: ci/unit-test-app.sh
+      run: ci/unit-test-app.sh
   Artifact:
     needs: Clone-down
     runs-on: ubuntu-latest
