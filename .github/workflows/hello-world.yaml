@@ -1,4 +1,7 @@
 name: Java CI
+env:
+  docker_username: ${{ secrets.DOCKER_USERNAME }}
+  docker_password: ${{ secrets.DOCKER_PASSWORD }}
 on: push
 jobs:
   Clone-down:
@@ -39,5 +42,18 @@ jobs:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
         with:
-          name: code
+          name: codes
           path: .
+    Docker-image:
+      needs: Build
+      needs: Test
+      steps:
+        - name: Download code
+          uses: actions/download-artifact@v2
+          with:
+            name: codes
+            path: .
+        - name: build docker
+          run: ci/build-docker.sh
+        - name: push docker
+          run: ci/push-docker.sh
