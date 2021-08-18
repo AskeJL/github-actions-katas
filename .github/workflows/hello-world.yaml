@@ -10,10 +10,14 @@ jobs:
         run: ci/build-app.sh
   Test:
     needs: Clone-down
+    runs-on: ubuntu-latest
+    container: gradle:6-jdk11
     - name: Test
         run: ci/unit-test-app.sh
   Artifact:
     needs: Clone-down
+    runs-on: ubuntu-latest
+    container: gradle:6-jdk11
     - name: Upload Repo
         uses: actions/upload-artifact@v2
         with:
