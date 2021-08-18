@@ -44,7 +44,7 @@ jobs:
         with:
           name: codes
           path: .
-    Docker-image:
+  Docker-image:
       needs: Build
       needs: Test
       steps:
