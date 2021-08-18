@@ -6,7 +6,7 @@ on: push
 jobs:
   Clone-down:
     name: Clone-down
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
     - uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
         name: code
         path: .
   Test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: Clone-down
     container: gradle:6-jdk11
     steps:
@@ -28,7 +28,7 @@ jobs:
     - name: Test with Gradle
       run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
   Build:
-      runs-on: self-hosted
+      runs-on: ubuntu-latest
       needs: Clone-down
       container: gradle:6-jdk11
       steps:
@@ -45,7 +45,7 @@ jobs:
           name: codes
           path: .
   Docker-image:
-      runs-on: self-hosted
+      runs-on: ubuntu-latest
       needs: [Build,Test]
       steps:
         - name: Download code
